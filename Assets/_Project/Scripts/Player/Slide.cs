@@ -46,6 +46,12 @@ public class Slide : MonoBehaviour
 
     public bool IsSliding => slideActive;
 
+    public void ForceEndSlideIfActive()
+    {
+        if (slideActive)
+            EndSlide();
+    }
+
     void Awake()
     {
         rb = GetComponent<Rigidbody>();

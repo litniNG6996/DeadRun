@@ -35,6 +35,23 @@ public class PlayerJumpDive : MonoBehaviour
     public bool IsRecovering => isRecovering;
     public bool IsGrounded => isGrounded;
 
+    /// <summary>Телепорт / рестарт: сброс нырка и корутин.</summary>
+    public void InterruptForTeleport()
+    {
+        if (diveRoutine != null)
+        {
+            StopCoroutine(diveRoutine);
+            diveRoutine = null;
+        }
+
+        isRecovering = false;
+        jumpCount = 0;
+        groundCheckDelay = 0f;
+
+        if (visualModel != null)
+            visualModel.localRotation = Quaternion.identity;
+    }
+
     void Start()
     {
         Physics.gravity = gravity;
