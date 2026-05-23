@@ -26,6 +26,8 @@ public class PlayerRun : MonoBehaviour
 
     private Vector3 moveInput;
 
+    public bool InfiniteRunEnabled => infiniteRun;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
